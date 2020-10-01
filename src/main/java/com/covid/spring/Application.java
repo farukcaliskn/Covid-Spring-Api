@@ -11,13 +11,14 @@ import java.util.ArrayList;
 
 @SpringBootApplication
 public class Application {
+    static String country = "turkey";
     static ArrayList<String> value = new ArrayList<>();
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
         Document doc = null;
         try {
-            doc = Jsoup.connect("https://www.worldometers.info/coronavirus/").get();
+            doc = Jsoup.connect("https://www.worldometers.info/coronavirus/country/" + country).get();
         } catch (IOException e) {
             e.printStackTrace();
         }
