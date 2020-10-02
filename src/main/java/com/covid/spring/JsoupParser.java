@@ -7,7 +7,16 @@ import java.util.ArrayList;
 
 public class JsoupParser {
 
-    static ArrayList<String> getCountry(String country) {
+    private static JsoupParser instance = null;
+
+    public static JsoupParser getInstance() {
+        if (instance == null)
+            instance = new JsoupParser();
+
+        return instance;
+    }
+
+    ArrayList<String> getCountry(String country) {
         ArrayList<String> value = new ArrayList<>();
         Document doc = null;
         try {
