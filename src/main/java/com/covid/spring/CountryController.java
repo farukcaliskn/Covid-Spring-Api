@@ -7,13 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 class CountryController {
-    /*
-    @GetMapping("/country")
-    @ResponseBody
-    public Cases countryData() {
-        return new Cases(Application.value.get(0), Application.value.get(1), Application.value.get(2));
-    }*/
-
     @RequestMapping(value = "cases", method = RequestMethod.GET)
     public @ResponseBody
     Country getItem(@RequestParam("country") String country) {
