@@ -11,11 +11,14 @@ import java.util.ArrayList;
 
 @SpringBootApplication
 public class Application {
-    static String country = "turkey";
     static ArrayList<String> value = new ArrayList<>();
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+        getCountry("turkey");
+    }
+
+    static void getCountry(String country) {
         Document doc = null;
         try {
             doc = Jsoup.connect("https://www.worldometers.info/coronavirus/country/" + country).get();
@@ -24,13 +27,9 @@ public class Application {
         }
 
         for (int i = 0; i < 3; i++) {
-            if (doc != null) {
+            if (doc != null)
                 value.add(doc.select("div.maincounter-number").get(i).select("span").text());
-            }
         }
-
-
-        System.out.println(value.get(1));
     }
 
 }
