@@ -1,6 +1,6 @@
 package com.covid.spring;
 
-import com.covid.spring.models.Cases;
+import com.covid.spring.models.Country;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +16,10 @@ class CountryController {
 
     @RequestMapping(value = "cases", method = RequestMethod.GET)
     public @ResponseBody
-    Cases getItem(@RequestParam("country") String country) {
+    Country getItem(@RequestParam("country") String country) {
         String cases = JsoupParser.getCountry(country).get(0);
         String deaths = JsoupParser.getCountry(country).get(1);
         String recovered = JsoupParser.getCountry(country).get(2);
-        return new Cases(cases, deaths, recovered);
+        return new Country(country, cases, deaths, recovered);
     }
 }

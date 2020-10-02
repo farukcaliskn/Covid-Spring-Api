@@ -1,12 +1,14 @@
 package com.covid.spring.models;
 
- public class Cases {
+public class Country {
 
+    private final String country;
     private final String cases;
     private final String death;
     private final String recovered;
 
-    public Cases(String cases, String death, String recovered) {
+    public Country(String country, String cases, String death, String recovered) {
+        this.country = country;
         this.cases = cases;
         this.death = death;
         this.recovered = recovered;
@@ -24,4 +26,7 @@ package com.covid.spring.models;
         return recovered;
     }
 
+    public String getCountry() {
+        return country;
+    }
 }
